@@ -134,14 +134,15 @@ Parks, O. H. et al. (2020). *Association of household disinfectants with infant 
 Lynch, S. V., & Pedersen, O. (2016). *The human intestinal microbiome in health and disease*. Nature Reviews Microbiology, 14(10), 585–595.  
 [https://doi.org/10.1038/nrmicro.2016.114](https://doi.org/10.1038/nrmicro.2016.114)
 
-## Pregunta 6 – Estrés Crónico
+## Pregunta 6 – ¿Acostumbrarse al estrés es realmente inofensivo?
 
-**Andrea lleva muchos años trabajando en un entorno muy competitivo, y para ella "es habitual" sentirse estresada, pero ya está acostumbrada. ¿Cuál es el verdadero impacto de este estrés crónico?**
+**Andrea trabaja en un entorno muy competitivo, y para ella sentirse estresada es "habitual". Cree que ya se ha acostumbrado con los años. ¿Qué dice la ciencia?**
 
-- A. El cuerpo se adapta con el tiempo y deja de producir cortisol  
-- ✅ B. El estrés crónico puede acortar tus telómeros y acelerar el envejecimiento celular  
-- C. Solo el estrés traumático tiene efectos biológicos duraderos  
-- D. Las técnicas de respiración apenas modifican la biología del estrés  
+- A. El cuerpo se adapta al estrés y deja de producir hormonas dañinas  
+- ✅ B. El estrés crónico, incluso si es “normalizado”, puede acortar los telómeros y acelerar el envejecimiento celular  
+- C. Solo el estrés emocional fuerte y repentino tiene impacto biológico  
+- D. Las personas con alta tolerancia al estrés desarrollan una mayor longevidad que la media  
+
 
 ---
 
@@ -161,16 +162,14 @@ Epel, E. S., Blackburn, E. H., Lin, J., et al. (2004). *Accelerated telomere sho
 
 ---
 
-## Pregunta 7 – Relaciones Sociales
+## Pregunta 7 – La soledad que mata en silencio
 
-**El padre de Miguel vive en otro pais, está físicamente está sano pero frecuentemente manifiesta que se siente muy solo. Miguel no está preocupado por el estado de salud de su padre ya que tan sólo manifiesta que su estado de ánimo es bajo. ¿qué relación crees que tiene esta soledad emocional con la longevidad??**
+**El padre de Miguel vive solo en otro país. Aunque físicamente está sano, confiesa sentirse solo casi todos los días. Miguel no está preocupado: "Mientras no tenga una enfermedad, no hay problema". ¿Compartes la opinión de Miguel?**
 
-- ✅ A. La soledad emocional activa vías inflamatorias y acorta la vida  
-- B. Mientras no haya depresión clínica, no hay riesgo para la salud física  
-- C. Estar solo es solo una cuestión psicológica sin consecuencias fisiológicas  
-- D. El cuerpo distingue entre “soledad sentida” y “soledad real” sin cambios hormonales  
-
----
+- ✅ A. La soledad emocional activa vías inflamatorias, eleva el cortisol y aumenta el riesgo de mortalidad  
+- B. Mientras no haya diagnóstico clínico de depresión, no hay riesgo para la salud física  
+- C. La soledad afecta el estado de ánimo, pero no el sistema inmunológico ni la longevidad  
+- D. Solo las personas que no tienen redes sociales sufren efectos negativos por aislamiento  
 
 ### 🧠 Explicación científica:
 La soledad percibida activa respuestas inmunológicas y hormonales similares al estrés crónico. Se ha relacionado con aumento de inflamación sistémica, presión arterial y riesgo cardiovascular, afectando directamente la esperanza de vida.
@@ -195,9 +194,17 @@ Holt-Lunstad, J., Smith, T. B., & Layton, J. B. (2010). *Social relationships an
 - ✅ A. Dosis altas de antioxidantes pueden interferir con mecanismos celulares de defensa y adaptación  
 - B. Tomar antioxidantes siempre mejora la reparación celular  
 - C. Los radicales libres no tienen ninguna función útil en el cuerpo  
-- D. Suplementarse elimina la necesidad de comer frutas y verduras  
+- D. Los antioxidantes eliminan la necesidad de comer frutas y verduras. El inconveniente es que son caros.  
 
 ---
+## Pregunta 8 – ¿Más antioxidantes, más salud?
+
+**Sandra toma cápsulas de antioxidantes cada mañana. Cree que cuanto más tome, más protegerá a su cuerpo del envejecimiento. ¿Qué opinas sobre esta práctica?**
+
+- ✅ A. En dosis elevadas, los antioxidantes pueden bloquear señales que activan mecanismos naturales de defensa  
+- B. Cuantos más antioxidantes se consumen, más se estimulan los genes de longevidad  
+- C. Los radicales libres solo provocan daño, por eso es clave neutralizarlos del todo con Antioxidantes
+- D. Los antioxidantes eliminan la necesidad de comer frutas y verduras. El mayor inconveniente es que son muy caros.   
 
 ### 🧠 Explicación científica:
 Un cierto nivel de radicales libres actúa como señal para activar mecanismos adaptativos (hormesis). El exceso de antioxidantes puede suprimir estas señales, bloqueando la respuesta celular beneficiosa y ralentizando procesos como la autofagia.
