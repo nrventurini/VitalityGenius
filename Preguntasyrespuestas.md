@@ -2,13 +2,12 @@
 
 ## Pregunta 1 – Ayuno Intermitente
 
-**Carlos sigue un consejo clásico: comer cada 2-3 horas “para no ralentizar el metabolismo”. Cree que así está optimizando su salud. ¿Qué revela la ciencia sobre este hábito?**
+**Carlos sigue el consejo de comer cada 2-3 horas “para no ralentizar el metabolismo”, ¿qué opinas sobre este hábito?**
 
 - ✅ A. Comer tan frecuentemente puede inhibir procesos de reparación celular esenciales para la longevidad  
-- B. Comer cada 2-3 horas acelera la autofagia y mejora el control glucémico  
-- C. Comer cada pocas horas reduce la producción de insulina y mejora la sensibilidad metabólica  
-- D. Este patrón alimentario activa genes asociados al envejecimiento saludable  
-
+- B. Este patrón alimentario activa genes asociados al envejecimiento saludable  
+- C. Comer seguido mantiene niveles de insulina estables y favorece el equilibrio metabólico
+- D. Es una estrategia recomendada para reducir la inflamación sistémica a lo largo del tiempo
 ---
 
 ### 🧠 Explicación científica:
@@ -27,41 +26,41 @@ Ravussin, E., Redman, L. M., Rochon, J., et al. (2015). *A 2-Year Randomized Con
 
 ---
 
-## Pregunta 2 – Ejercicio de Fuerza
+## Pregunta 2 – Entrenamiento de fuerza vs. cardio
 
-**Mucha gente entrena fuerza por estética. Pero… ¿y si fuera uno de los ejercicios más ligados a la longevidad celular, incluso más que el cardio? ¿Qué revela la ciencia?**
+**¿Qué actividad física reveló tener un mayor impacto en reducir el riesgo de muerte por todas las causas, según estudios en humanos?**
 
-- A. Entrenar fuerza reduce el volumen mitocondrial, pero aumenta el metabolismo basal  
-- ✅ B. Levantar pesas activa genes relacionados con longevidad y reduce mortalidad por todas las causas  
-- C. El entrenamiento de fuerza solo tiene efectos visibles, no celulares  
-- D. Caminar cada día supera al entrenamiento de fuerza en beneficios para la edad biológica  
+- A. Caminar 10.000 pasos al día para mejorar la salud cardiovascular  
+- B. Hacer ejercicio aeróbico de forma constante (correr, nadar, bicicleta)  
+- ✅ C. Entrenar fuerza al menos 2 veces por semana  
+- D. Practicar yoga o pilates para reducir el estrés y mejorar la flexibilidad  
 
 ---
 
 ### 🧠 Explicación científica:
-El entrenamiento de fuerza activa vías de señalización celular (como mTOR y AMPK) que favorecen la regeneración muscular, densidad ósea y control glucémico. Está vinculado directamente con menor riesgo de muerte por todas las causas.
+La fuerza muscular es uno de los predictores más potentes de longevidad. El entrenamiento de fuerza activa vías anabólicas (como mTOR) y mejora la sensibilidad a la insulina, el metabolismo y la densidad ósea, reduciendo el riesgo de muerte por todas las causas.
 
 ---
 
 ### ❌ Desmitificación:
-Ver las pesas solo como una herramienta estética es un error común. En realidad, es una intervención antienvejecimiento con efectos moleculares, hormonales y funcionales a largo plazo.
+Aunque el cardio tiene múltiples beneficios, ver el entrenamiento de fuerza solo como una herramienta estética es un mito. **Entrenar fuerza es una intervención antienvejecimiento de alto impacto** que puede salvarte años de vida saludable.
 
 ---
 
 ### 📚 Referencia científica:
-Ruiz, J. R., Sui, X., Lobelo, F., et al. (2008). *Association between muscular strength and mortality in men: prospective cohort study*. BMJ, 337, a439.  
+Ruiz, J. R., Sui, X., Lobelo, F., et al. (2008). *Association between muscular strength and mortality in men: prospective cohort study*. **BMJ**, 337, a439.  
 [https://doi.org/10.1136/bmj.a439](https://doi.org/10.1136/bmj.a439)
 
 ---
 
 ## Pregunta 3 – Sueño Irregular
 
-**Laura duerme 8 horas cada noche, pero cambia el horario cada día. Cree que lo importante es dormir “lo suficiente”. ¿Qué revela la ciencia?**
+**Laura es azafata y debido a sus turnos de trabajo suele irse a la cama en horarios diferentes. ¿Qué opinas de este hábito sabiendo que siempre respeta sus 8 horas de sueño?**
 
 - ✅ A. Dormir 8h en horarios caóticos desincroniza genes implicados en reparación y metabolismo  
 - B. Si duerme 8h, su cuerpo puede adaptar los relojes internos sin problema  
 - C. Dormir a distintas horas puede mejorar la resiliencia circadiana  
-- D. Dormir más cuando el cuerpo lo pide es mejor que seguir un horario estricto  
+- D. Dormir cuando el cuerpo lo pide es mejor que seguir un horario estricto  
 
 ---
 
@@ -83,7 +82,7 @@ Potter, G. D. M., Skene, D. J., Arendt, J., et al. (2016). *Circadian Rhythm and
 
 ## Pregunta 4 – Ronquido Inofensivo
 
-**Marcela ronca cada noche pero no tiene apnea. Cree que solo molesta a su pareja, no a su salud. ¿Qué ha demostrado la ciencia?**
+**Pablo ronca cada noche pero no tiene apnea. Cree que solo molesta a su pareja, no a su salud. ¿Qué opinas de esta creencia?**
 
 - ✅ A. El ronquido habitual, incluso sin apnea, se asocia a daño vascular y mayor riesgo cardiovascular  
 - B. Sin diagnóstico de apnea, el ronquido es solo un fenómeno acústico sin relevancia clínica  
@@ -108,36 +107,36 @@ Lee, C. H., Khoo, S. M., Chan, M. Y., et al. (2019). *Habitual snoring and risk 
 
 ---
 
-## Pregunta 5 – Microbioma
+## Pregunta 5 – El error de vivir en un hogar “demasiado limpio”
 
-**Muchos creen que limpiar obsesivamente el hogar es señal de salud. Pero… ¿qué revela la ciencia sobre este hábito y su impacto en tu microbioma?**
+**¿Qué hábito aparentemente saludable puede estar saboteando silenciosamente tu sistema inmune y tu longevidad?**
 
-- A. La exposición controlada a microbios diversos fortalece tu inmunidad  
-- ✅ B. Usar desinfectantes constantemente puede dañar tu microbiota intestinal  
-- C. Lavar frutas con vinagre protege la flora intestinal  
-- D. La limpieza extrema favorece una microbiota más resiliente  
+- A. Usar vinagre o bicarbonato como limpiadores naturales  
+- ✅ B. Desinfectar con lejía o productos antibacterianos a diario  
+- C. Mantener las ventanas abiertas para ventilar  
+- D. Pasar la aspiradora tres veces por semana  
 
 ---
 
 ### 🧠 Explicación científica:
-El uso crónico de productos desinfectantes reduce la diversidad microbiana en el entorno y en el cuerpo humano. Una microbiota menos diversa se asocia con mayor riesgo de enfermedades inflamatorias, metabólicas y autoinmunes.
+El uso excesivo de productos antibacterianos reduce la diversidad del microbioma ambiental, lo que altera tu microbiota intestinal. Esto se ha relacionado con mayor riesgo de asma, obesidad y enfermedades autoinmunes.
 
 ---
 
 ### ❌ Desmitificación:
-El mito de que “más limpio es siempre mejor” ha llevado a entornos excesivamente estériles que debilitan nuestro ecosistema interno. Tu cuerpo necesita microbios… no un laboratorio aséptico.
+Limpiar no es el problema. **Esterilizar obsesivamente tu casa sí lo es.** Necesitamos microbios para entrenar nuestro sistema inmune. Vivir en una “burbuja” puede tener consecuencias invisibles pero profundas.
 
 ---
 
 ### 📚 Referencia científica:
+Parks, O. H. et al. (2020). *Association of household disinfectants with infant gut microbiota and overweight in Canadian children*. **CMAJ**, 190(13), E1097–E1107.  
+[https://doi.org/10.1503/cmaj.191146](https://doi.org/10.1503/cmaj.191146)
 Lynch, S. V., & Pedersen, O. (2016). *The human intestinal microbiome in health and disease*. Nature Reviews Microbiology, 14(10), 585–595.  
 [https://doi.org/10.1038/nrmicro.2016.114](https://doi.org/10.1038/nrmicro.2016.114)
 
----
-
 ## Pregunta 6 – Estrés Crónico
 
-**Andrea cree que estar estresada “es normal” porque trabaja en un entorno competitivo. Dice que ya se ha acostumbrado. ¿Cuál es el verdadero impacto de este estrés crónico?**
+**Andrea lleva muchos años trabajando en un entorno muy competitivo, y para ella "es habitual" sentirse estresada, pero ya está acostumbrada. ¿Cuál es el verdadero impacto de este estrés crónico?**
 
 - A. El cuerpo se adapta con el tiempo y deja de producir cortisol  
 - ✅ B. El estrés crónico puede acortar tus telómeros y acelerar el envejecimiento celular  
@@ -164,7 +163,7 @@ Epel, E. S., Blackburn, E. H., Lin, J., et al. (2004). *Accelerated telomere sho
 
 ## Pregunta 7 – Relaciones Sociales
 
-**Miguel se siente solo, pero físicamente está sano. Cree que la soledad solo afecta el estado de ánimo. ¿Qué dice la ciencia sobre este tipo de aislamiento emocional?**
+**El padre de Miguel vive en otro pais, está físicamente está sano pero frecuentemente manifiesta que se siente muy solo. Miguel no está preocupado por el estado de salud de su padre ya que tan sólo manifiesta que su estado de ánimo es bajo. ¿qué relación crees que tiene esta soledad emocional con la longevidad??**
 
 - ✅ A. La soledad emocional activa vías inflamatorias y acorta la vida  
 - B. Mientras no haya depresión clínica, no hay riesgo para la salud física  
