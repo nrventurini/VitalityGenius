@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>VitalGenius - Examen</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+        .question { margin-bottom: 20px; }
+        .options { list-style-type: none; padding: 0; }
+        .options li { margin: 8px 0; }
+        .progress-bar { height: 20px; background-color: #eee; margin: 20px 0; border-radius: 10px; overflow: hidden; }
+        .progress { height: 100%; background-color: #4caf50; width: 0%; text-align: center; color: white; }
+        .hidden { display: none; }
+        .email-form { margin-top: 20px; }
+        .result { font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>VitalGenius – Examen de Longevidad</h1>
+    <p>La desinformación puede estar envejeciendo tu cuerpo sin que lo sepas. Descubre en pocos minutos qué creencias están saboteando tu vitalidad.</p>
+
+    <div class="progress-bar"><div class="progress" id="progress"></div></div>
+
+    <div id="quiz"></div>
+
+    <div class="email-form hidden" id="emailForm">
+        <p>Estás a un paso de descubrir tu resultado. Ingresa tu email para acceder a tu puntuación y nuestra guía express de biohacks gratuita:</p>
+        <input type="email" id="email" placeholder="Tu email" required />
+        <button onclick="showResults()">Ver resultado</button>
+        <p style="font-size: 12px;">Nunca cederemos tus datos a terceros ni recibirás publicidad abusiva.</p>
+    </div>
+
+    <div id="result" class="result hidden"></div>
+
+    <script>
+        const questions = [
+    {
+        question: "¿Cuál de estas prácticas puede alterar tu metabolismo y acelerar el envejecimiento?",
+        options: ["Comer cada 2-3 horas", "Ayuno intermitente", "Grasas saludables", "Verduras fermentadas"],
+        correct: 0
+    },
+    {
+        question: "¿Qué tipo de ejercicio se asocia a menor mortalidad en humanos?",
+        options: ["Correr diario", "Caminar suave", "Entrenar fuerza", "Bailar o yoga"],
+        correct: 2
+    },
+    {
+        question: "Dormir 8h pero en horarios cambiantes...",
+        options: ["Desincroniza genes", "No importa", "Mejora flexibilidad", "No afecta si escuchas tu cuerpo"],
+        correct: 0
+    },
+    {
+        question: "¿Qué dice la ciencia sobre el ronquido habitual sin apnea?",
+        options: ["Aumenta riesgo CV", "No importa", "Normal en mayores", "Solo con pausas respiratorias"],
+        correct: 0
+    },
+    {
+        question: "¿Qué hábito 'limpio' reduce diversidad bacteriana intestinal?",
+        options: ["Vegetales crudos", "Desinfectantes en casa", "Probióticos", "Vinagre en frutas"],
+        correct: 1
+    },
+    {
+        question: "¿Qué frase refleja una falsa creencia sobre el estrés crónico?",
+        options: ["El cuerpo se adapta", "Un poco ayuda", "Respirar no sirve", "Meditación altera células"],
+        correct: 0
+    },
+    {
+        question: "¿Cuál afirmación sobre salud social es verdadera?",
+        options: ["Soledad no afecta", "Vida social prolonga vida", "Positivos no impactan", "Estar solo fortalece"],
+        correct: 1
+    },
+    {
+        question: "¿Qué afirmación sobre antioxidantes es científicamente válida?",
+        options: ["Altas dosis siempre ayudan", "Radicales libres pueden ser útiles", "Más = mejor", "Suplementos reemplazan frutas"],
+        correct: 1
+    },
+    {
+        question: "¿Qué hábito nocturno sabotea tus ritmos internos?",
+        options: ["Pantallas antes de dormir", "Leer libros", "Habitación ventilada", "Música relajante"],
+        correct: 0
+    },
+    {
+        question: "¿Qué hábito alimenta células senescentes?",
+        options: ["Comer en exceso", "Dormir profundo", "Entrenar fuerza", "Agua mineral en ayunas"],
+        correct: 0
+    },
+    {
+        question: "¿Qué factor externo acelera el envejecimiento celular?",
+        options: ["Contaminación urbana", "Restaurantes salados", "Ruidos de tráfico", "No caminar diario"],
+        correct: 0
+    },
+    {
+        question: "¿Qué creencia psicológica acelera el deterioro físico?",
+        options: ["Es tarde para mejorar", "Visualizarse joven no sirve", "Creer que envejeces rápido", "No pensar en la edad"],
+        correct: 2
+    },
+    {
+        question: "¿Qué patrón de sueño altera ritmos biológicos?",
+        options: ["8h con horarios cambiantes", "Poco entre semana, mucho finde", "Luces LED", "Dos bloques de 4h"],
+        correct: 0
+    },
+    {
+        question: "¿Qué hábito 'detox' puede ralentizar metabolismo?",
+        options: ["Ayuno 16h semanal", "Batidos detox varios días", "Eliminar azúcar", "Sustituir snack por fruta"],
+        correct: 1
+    },
+    {
+        question: "¿Qué hábito matutino altera tu eje hormonal?",
+        options: ["Café al despertar sin comer", "Luz solar", "Ejercicio en ayunas", "Agua con limón"],
+        correct: 0
+    },
+    {
+        question: "Dormir 5h entre semana y 10h en finde...",
+        options: ["No compensa daño", "Mucha melatonina", "Menos REM", "Oxígeno cerebral excesivo"],
+        correct: 0
+    }
+];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const quiz = document.getElementById('quiz');
+            quiz.innerHTML = "";
+            if (currentQuestion < questions.length) {
+                const q = questions[currentQuestion];
+                const div = document.createElement('div');
+                div.className = "question";
+                div.innerHTML = `<h3>Pregunta ${currentQuestion + 1} de ${questions.length}</h3><p>${q.question}</p>`;
+                const ul = document.createElement('ul');
+                ul.className = "options";
+                q.options.forEach((opt, idx) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<button onclick="selectOption(${idx})">${opt}</button>`;
+                    ul.appendChild(li);
+                });
+                div.appendChild(ul);
+                quiz.appendChild(div);
+                updateProgress();
+            } else {
+                document.getElementById('emailForm').classList.remove('hidden');
+            }
+        }
+
+        function selectOption(index) {
+            if (index === questions[currentQuestion].correct) score++;
+            currentQuestion++;
+            loadQuestion();
+        }
+
+        function updateProgress() {
+            const percent = Math.floor((currentQuestion / questions.length) * 100);
+            document.getElementById('progress').style.width = percent + "%";
+            document.getElementById('progress').innerText = `Pregunta ${currentQuestion} de ${questions.length}`;
+        }
+
+        function showResults() {
+            const email = document.getElementById('email').value;
+            if (!email.includes("@")) {
+                alert("Por favor, introduce un email válido.");
+                return;
+            }
+
+            let badge = "";
+            if (score >= 14) badge = "🥇 Nivel Oro – ¡Tus creencias están alineadas con la ciencia!";
+            else if (score >= 11) badge = "🥈 Nivel Plata – Estás en muy buen camino.";
+            else if (score >= 8) badge = "🥉 Nivel Bronce – Algunas creencias pueden mejorarse.";
+            else badge = "🔵 Nivel Esperanza – Estás a tiempo de transformar tu salud.";
+
+            document.getElementById('quiz').classList.add('hidden');
+            document.getElementById('emailForm').classList.add('hidden');
+            const result = document.getElementById('result');
+            result.classList.remove('hidden');
+            result.innerHTML = `<p>Has completado el test. Puntuación: ${score}/${questions.length}</p><p>${badge}</p>`;
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
