@@ -28,7 +28,7 @@ Ravussin, E., Redman, L. M., Rochon, J., et al. (2015). *A 2-Year Randomized Con
 
 ## Pregunta 2 – Entrenamiento de fuerza vs. cardio
 
-**¿Qué actividad física reveló tener un mayor impacto en reducir el riesgo de muerte por todas las causas, según estudios en humanos?**
+**¿Qué actividad física crees que tiene mayor impacto en reducir el riesgo de muerte por todas las causas, según estudios en humanos?**
 
 - A. Caminar 10.000 pasos al día para mejorar la salud cardiovascular  
 - B. Hacer ejercicio aeróbico de forma constante (correr, nadar, bicicleta)  
@@ -55,7 +55,7 @@ Ruiz, J. R., Sui, X., Lobelo, F., et al. (2008). *Association between muscular s
 
 ## Pregunta 3 – Sueño Irregular
 
-**Laura es azafata y debido a sus turnos de trabajo suele irse a la cama en horarios diferentes. ¿Qué opinas de este hábito sabiendo que siempre respeta sus 8 horas de sueño?**
+**Laura es azafata y debido a sus turnos de trabajo suele irse a la cama en horarios muy diferentes. ¿Qué opinas de este hábito sabiendo que Laura siempre respeta sus 8 horas de sueño?**
 
 - ✅ A. Dormir 8h en horarios caóticos desincroniza genes implicados en reparación y metabolismo  
 - B. Si duerme 8h, su cuerpo puede adaptar los relojes internos sin problema  
@@ -107,14 +107,14 @@ Lee, C. H., Khoo, S. M., Chan, M. Y., et al. (2019). *Habitual snoring and risk 
 
 ---
 
-## Pregunta 5 – El error de vivir en un hogar “demasiado limpio”
+## Pregunta 5 – ¿Más limpio, más sano?
 
-**¿Qué hábito aparentemente saludable puede estar saboteando silenciosamente tu sistema inmune y tu longevidad?**
+**¿Cuál de estos hábitos aparentemente saludables puede estar saboteando tu sistema inmune y tu longevidad sin que lo notes?**
 
-- A. Usar vinagre o bicarbonato como limpiadores naturales  
+- A. Usar ambientadores antibacterianos para eliminar olores y gérmenes  
 - ✅ B. Desinfectar con lejía o productos antibacterianos a diario  
-- C. Mantener las ventanas abiertas para ventilar  
-- D. Pasar la aspiradora tres veces por semana  
+- C. Ventilar la casa cada mañana para renovar el aire  
+- D. Lavar las manos antes de comer o al llegar de la calle  
 
 ---
 
