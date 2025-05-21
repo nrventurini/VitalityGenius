@@ -186,17 +186,6 @@ Holt-Lunstad, J., Smith, T. B., & Layton, J. B. (2010). *Social relationships an
 [https://doi.org/10.1371/journal.pmed.1000316](https://doi.org/10.1371/journal.pmed.1000316)
 
 ---
-
-## Pregunta 8 – Antioxidantes
-
-**Sandra toma antioxidantes todos los días convencida de que “cuanto más, mejor”. ¿Qué revela la ciencia sobre el exceso de antioxidantes?**
-
-- ✅ A. Dosis altas de antioxidantes pueden interferir con mecanismos celulares de defensa y adaptación  
-- B. Tomar antioxidantes siempre mejora la reparación celular  
-- C. Los radicales libres no tienen ninguna función útil en el cuerpo  
-- D. Los antioxidantes eliminan la necesidad de comer frutas y verduras. El inconveniente es que son caros.  
-
----
 ## Pregunta 8 – ¿Más antioxidantes, más salud?
 
 **Sandra toma cápsulas de antioxidantes cada mañana. Cree que cuanto más tome, más protegerá a su cuerpo del envejecimiento. ¿Qué opinas sobre esta práctica?**
