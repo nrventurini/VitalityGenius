@@ -20,12 +20,25 @@
     <h1>VitalGenius – Examen de Longevidad</h1>
     <p>La desinformación puede estar envejeciendo tu cuerpo sin que lo sepas. Descubre en pocos minutos qué creencias están saboteando tu vitalidad.</p>
 
+    <div id="startContainer">
+    <button onclick="iniciarTest()" style="font-size: 18px; padding: 12px 24px; margin-top: 20px; background-color: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer;">
+    🧪 Iniciar el test
+    </button>
+    </div>
+
+    
     <div class="progress-bar"><div class="progress" id="progress"></div></div>
 
-    <div id="quiz"></div>
+    <div id="quiz" class="hidden"></div>
 
     <div class="email-form hidden" id="emailForm">
-  <p>Estás a un paso de descubrir tu resultado. Ingresa tu email para acceder a tu puntuación y nuestra guía express de biohacks gratuita:</p>
+  <p>Estás a un paso de descubrir tu resultado. Pásanos tu mejor email y recibirás</p>
+   <ul style="text-align:left; display:inline-block;">
+    <li>✅ Tu puntuación del test</li>
+    <li>✅ Explicación científica a tus respuestas incorrectas,</li>
+    <li>📘 Nuestro ebook más leído que revolucionará tu conocimiento de longevidad</li>
+  </ul>
+   
   <input type="text" id="nombre" placeholder="Tu nombre (opcional)" style="padding: 10px; width: 100%; max-width: 400px;"><br><br>
 
   <input type="email" id="email" placeholder="dejanos_tu_mejor@email.com" required style="padding: 10px; width: 100%; max-width: 400px;"><br><br>
@@ -50,7 +63,7 @@
     </p>
   </div>
 
-  <button onclick="validarFormulario()">Ver resultado y descargar guía</button>
+  <button onclick="validarFormulario()">Quiero ver mi puntuación</button>
 </div>
 
 
@@ -59,206 +72,578 @@
     <script>
         const questions = [
     {
-        question: "¿Cuál de estas prácticas puede alterar tu metabolismo y acelerar el envejecimiento?",
-        options: ["Comer cada 2-3 horas", "Ayuno intermitente", "Grasas saludables", "Verduras fermentadas"],
-        correct: 0
+        question: "Carlos sigue el consejo de comer cada 2-3 horas “para no ralentizar el metabolismo”, ¿qué opinas sobre este hábito?",
+        options: ["A. Comer tan frecuentemente puede inhibir procesos de reparación celular esenciales para la longevidad", 
+                "B. Este patrón alimentario activa genes asociados al envejecimiento saludable", 
+                "C. Comer seguido mantiene niveles de insulina estables y favorece el equilibrio metabólico", 
+                "D. Es una estrategia recomendada para reducir la inflamación sistémica a lo largo del tiempo"],
+        correct: 0,
+        explicacion: "Comer cada pocas horas mantiene niveles elevados de insulina y glucosa, lo cual interrumpe procesos clave como la autofagia, esenciales para eliminar células disfuncionales. El ayuno intermitente ha demostrado mejorar la sensibilidad a la insulina y prolongar la vida útil celular.",
+        desmitificacion: "El mito de “activar el metabolismo comiendo constantemente” se basa en una mala interpretación de estudios sobre termogénesis. Lo que se estimula es la digestión, no la longevidad. Más frecuencia no significa mejor metabolismo.",
+        referencia: "Ravussin, E., Redman, L. M., Rochon, J., et al. (2015). A 2-Year Randomized Controlled Trial of Human Caloric Restriction: Feasibility and Effects on Predictors of Health Span and Longevity. Journal of Gerontology: Series A, 70(9), 1097–1104."
+
     },
     {
-        question: "¿Qué tipo de ejercicio se asocia a menor mortalidad en humanos?",
-        options: ["Correr diario", "Caminar suave", "Entrenar fuerza", "Bailar o yoga"],
-        correct: 2
+        question: "¿Qué actividad física crees que tiene mayor impacto en reducir el riesgo de muerte por todas las causas, según estudios en humanos?",
+        options: ["A. Caminar 10.000 pasos al día para mejorar la salud cardiovascular", 
+                "B. Hacer ejercicio aeróbico de forma constante (correr, nadar, bicicleta)", 
+                "C. Entrenar fuerza al menos 2 veces por semana", 
+                "D. Practicar yoga o pilates para reducir el estrés y mejorar la flexibilidad"],
+        correct: 2,
+        explicacion: "La fuerza muscular es uno de los predictores más potentes de longevidad. El entrenamiento de fuerza activa vías anabólicas (como mTOR) y mejora la sensibilidad a la insulina, el metabolismo y la densidad ósea, reduciendo el riesgo de muerte por todas las causas.",
+        desmitificacion: "Aunque el cardio tiene múltiples beneficios, ver el entrenamiento de fuerza solo como una herramienta estética es un mito. Entrenar fuerza es una intervención antienvejecimiento de alto impacto que puede salvarte años de vida saludable.",
+        referencia: "Ruiz, J. R., Sui, X., Lobelo, F., et al. (2008). Association between muscular strength and mortality in men: prospective cohort study. BMJ, 337, a439."
+    },
+
+    {
+        question: "Laura es azafata y debido a sus turnos de trabajo suele irse a la cama en horarios muy diferentes. ¿Qué opinas de este hábito sabiendo que Laura siempre respeta sus 8 horas de sueño?",
+        options: ["A. Dormir 8h en horarios caóticos desincroniza genes implicados en reparación y metabolismo", 
+                "B. Si duerme 8h, su cuerpo puede adaptar los relojes internos sin problema", 
+                "C. Dormir a distintas horas puede mejorar la resiliencia circadiana", 
+                "D. Dormir cuando el cuerpo lo pide es mejor que seguir un horario estricto"],
+        correct: 0,
+        explicacion: "La regularidad del sueño es tan importante como la duración. Cambiar constantemente los horarios interfiere con la expresión de genes circadianos que regulan reparación tisular, metabolismo y función inmune.",
+        desmitificacion: "Dormir “lo suficiente” no es lo mismo que dormir “a la hora correcta”. La cronodisrupción ocurre aunque se cumplan las 8 horas, y tiene efectos similares al jet lag permanente.",
+        referencia: "Potter, G. D. M., Skene, D. J., Arendt, J., et al. (2016). Circadian Rhythm and Sleep Disruption: Causes, Metabolic Consequences, and Countermeasures. PNAS, 113(9), 10479–10488."
+    },
+
+    {
+        question: "Pablo ronca cada noche pero no tiene apnea. Cree que solo molesta a su pareja, no a su salud. ¿Qué opinas de esta creencia?",
+        options: ["A. El ronquido habitual, incluso sin apnea, se asocia a daño vascular y mayor riesgo cardiovascular", 
+                "B. Sin diagnóstico de apnea, el ronquido es solo un fenómeno acústico sin relevancia clínica", 
+                "C. Roncar en adultos mayores es normal y no se vincula a enfermedad", 
+                "D. El ronquido solo es preocupante si produce despertares frecuentes"],
+        correct: 0,
+        explicacion: "El ronquido crónico puede reflejar una resistencia parcial de las vías respiratorias, lo que genera microdespertares, hipoxia intermitente y disfunción endotelial. Estos factores elevan el riesgo de enfermedad cardiovascular incluso sin apnea diagnosticada.",
+        desmitificacion: "Creer que el ronquido es inofensivo si no hay apnea es un error extendido. Su efecto silencioso puede dañar tus vasos sanguíneos sin que te des cuenta.",
+        referencia: "Lee, C. H., Khoo, S. M., Chan, M. Y., et al. (2019). Habitual snoring and risk of cardiovascular disease: A population-based study. American Journal of Respiratory and Critical Care Medicine, 199(1), 111–118."
+    },
+
+    {
+        question: "¿Cuál de estos hábitos aparentemente saludables puede estar saboteando tu sistema inmune y tu longevidad sin que lo notes?",
+        options: ["A. Usar ambientadores antibacterianos para eliminar olores y gérmenes", 
+                "B. Desinfectar con lejía o productos antibacterianos a diario", 
+                "C. Ventilar la casa cada mañana para renovar el aire", 
+                "D. Lavar las manos antes de comer o al llegar de la calle"],
+        correct: 1,
+        explicacion: "El uso excesivo de productos antibacterianos reduce la diversidad del microbioma ambiental, lo que altera tu microbiota intestinal. Esto se ha relacionado con mayor riesgo de asma, obesidad y enfermedades autoinmunes.",
+        desmitificacion: "Limpiar no es el problema. Esterilizar obsesivamente tu casa sí lo es. Necesitamos microbios para entrenar nuestro sistema inmune. Vivir en una “burbuja” puede tener consecuencias invisibles pero profundas.",
+        referencia: "Parks, O. H. et al. (2020). Association of household disinfectants with infant gut microbiota and overweight in Canadian children. CMAJ, 190(13), E1097–E1107."
+    },
+
+    {
+        question: "Andrea trabaja en un entorno muy competitivo, y para ella sentirse estresada es habitual. Cree que ya se ha acostumbrado con los años. ¿Qué dice la ciencia?",
+        options: ["A. El cuerpo se adapta al estrés y deja de producir hormonas dañinas", 
+                "B. El estrés crónico, incluso si es “normalizado”, puede acortar los telómeros y acelerar el envejecimiento celular", 
+                "C. Solo el estrés emocional fuerte y repentino tiene impacto biológico", 
+                "D. Las personas con alta tolerancia al estrés desarrollan una mayor longevidad que la media"],
+        correct: 1,
+        explicacion: "El estrés crónico activa continuamente el eje HPA, elevando los niveles de cortisol. Esto daña el ADN, altera la neuroplasticidad, suprime la función inmune y acorta los telómeros, marcadores clave del envejecimiento celular y el riesgo de enfermedad.",
+        desmitificacion: "“Acostumbrarse al estrés” no significa que tu cuerpo lo tolere. Al contrario, significa que está acumulando daño lentamente. El silencio biológico del estrés sostenido es uno de los enemigos más letales de la longevidad.",
+        referencia: "Epel, E. S., Blackburn, E. H., Lin, J., et al. (2004). Accelerated telomere shortening in response to life stress. PNAS, 101(49), 17312–17315."
     },
     {
-        question: "Dormir 8h pero en horarios cambiantes...",
-        options: ["Desincroniza genes", "No importa", "Mejora flexibilidad", "No afecta si escuchas tu cuerpo"],
-        correct: 0
+        question: "El padre de Miguel vive solo en otro país. Aunque físicamente está sano, confiesa sentirse solo casi todos los días. Miguel no está preocupado: Mientras no tenga una enfermedad, no hay problema. ¿Compartes la opinión de Miguel?",
+        options: ["A. La soledad emocional activa vías inflamatorias, eleva el cortisol y aumenta el riesgo de mortalidad", 
+                "B. Mientras no haya diagnóstico clínico de depresión, no hay riesgo para la salud física", 
+                "C. La soledad afecta el estado de ánimo, pero no el sistema inmunológico ni la longevidad", 
+                "D. Solo las personas que no tienen redes sociales sufren efectos negativos por aislamiento"],
+        correct: 0,
+        explicacion: "La soledad percibida activa respuestas inmunológicas y hormonales similares al estrés crónico. Se ha relacionado con aumento de inflamación sistémica, presión arterial y riesgo cardiovascular, afectando directamente la esperanza de vida.",
+        desmitificacion: "La soledad no es solo tristeza: es un factor de riesgo médico tan potente como fumar 15 cigarrillos al día. Ignorar su impacto biológico es un error de salud pública.",
+        referencia: "Holt-Lunstad, J., Smith, T. B., & Layton, J. B. (2010). Social relationships and mortality risk: a meta-analytic review. PLOS Medicine, 7(7), e1000316."
     },
+
     {
-        question: "¿Qué dice la ciencia sobre el ronquido habitual sin apnea?",
-        options: ["Aumenta riesgo CV", "No importa", "Normal en mayores", "Solo con pausas respiratorias"],
-        correct: 0
+        question: "Sandra toma cápsulas de antioxidantes cada mañana. Cree que cuanto más tome, más protegerá a su cuerpo del envejecimiento. ¿Qué opinas sobre esta práctica?",
+        options: ["A. En dosis elevadas, los antioxidantes pueden bloquear señales que activan mecanismos naturales de defensa", 
+                "B. Cuantos más antioxidantes se consumen, más se estimulan los genes de longevidad", 
+                "C. Los radicales libres solo provocan daño, por eso es clave neutralizarlos del todo con Antioxidantes", 
+                "D. Los antioxidantes eliminan la necesidad de comer frutas y verduras. El mayor inconveniente es que son muy caros."],
+        correct: 0,
+        explicacion: "Un cierto nivel de radicales libres actúa como señal para activar mecanismos adaptativos (hormesis). El exceso de antioxidantes puede suprimir estas señales, bloqueando la respuesta celular beneficiosa y ralentizando procesos como la autofagia.",
+        desmitificacion: "No, más antioxidantes no siempre son mejores. En exceso, pueden ser contraproducentes y reducir la resiliencia celular. La clave no es eliminar radicales… es gestionarlos.",
+        referencia: "Ristow, M., & Schmeisser, K. (2014). Mitohormesis: Promoting health and lifespan by increased levels of reactive oxygen species (ROS). EMBO Reports, 15(12), 1147–1159."
     },
+
     {
-        question: "¿Qué hábito 'limpio' reduce diversidad bacteriana intestinal?",
-        options: ["Vegetales crudos", "Desinfectantes en casa", "Probióticos", "Vinagre en frutas"],
-        correct: 1
+        question: "Ana dice que ver series por la noche la relaja. “Si me ayuda a dormir, debe ser bueno”, piensa. ¿Qué podría estar ocurriendo realmente a nivel celular?",
+        options: ["A. La luz azul de las pantallas inhibe melatonina y altera tu reloj biológico", 
+                "B. Si estás relajado, el cuerpo ignora el estímulo lumínico", 
+                "C. Ver series por la noche es mejor que usar el móvil porque hay menos interacción", 
+                "D. El contenido emocional de la serie importa más que la luz que emite"],
+        correct: 0,
+        explicacion: "La exposición nocturna a luz azul, especialmente proveniente de pantallas, suprime la producción de melatonina y altera la sincronización del ritmo circadiano, lo que afecta el metabolismo, la reparación celular y la calidad del sueño.",
+        desmitificacion: "Sentirte relajado no significa que tu biología también lo esté. La luz azul es como un “cóctel antinatural” que le dice a tu cuerpo: “¡es de día!”, justo cuando necesita apagarse.",
+        referencia: "Chang, A. M., Aeschbach, D., Duffy, J. F., & Czeisler, C. A. (2015). Evening use of light-emitting eReaders negatively affects sleep, circadian timing, and next-morning alertness. PNAS, 112(4), 1232–1237."
     },
+
     {
-        question: "¿Qué frase refleja una falsa creencia sobre el estrés crónico?",
-        options: ["El cuerpo se adapta", "Un poco ayuda", "Respirar no sirve", "Meditación altera células"],
-        correct: 0
+        question: "Claudio suele comer “hasta sentirse lleno”, porque cree que eso ayuda a tener energía y evitar antojos. ¿Qué podría estar acumulando en su cuerpo sin saberlo?",
+        options: [" A. Células senescentes que promueven inflamación y envejecimiento silencioso", 
+                "B. Masa muscular útil para la reserva energética a largo plazo", 
+                "C. Triglicéridos esenciales para la función cerebral", 
+                "D. Hormonas anabólicas protectoras del sistema inmune"],
+        correct: 0,
+        explicacion: "El exceso calórico crónico aumenta la carga oxidativa y promueve la acumulación de células senescentes, que son células envejecidas que no se eliminan adecuadamente y secretan sustancias inflamatorias que aceleran el deterioro tisular.",
+        desmitificacion: "Sentirte lleno no es sinónimo de estar nutrido. Comer en exceso “solo un poco cada día” es como acelerar el envejecimiento en cámara lenta.",
+        referencia: "Ogrodnik, M., Salmonowicz, H., & Gladyshev, V. N. (2019). Senescence and the aging process. Cell Metabolism, 29(3), 491–507."
     },
+
     {
-        question: "¿Cuál afirmación sobre salud social es verdadera?",
-        options: ["Soledad no afecta", "Vida social prolonga vida", "Positivos no impactan", "Estar solo fortalece"],
-        correct: 1
+        question: "Isabel come sano, hace ejercicio y duerme bien. Pero vive en el centro de una gran ciudad. ¿Qué podría estar saboteando su salud sin que lo note?",
+        options: [" A. La contaminación del aire urbano acelera su envejecimiento celular", 
+                "B. El estrés urbano solo afecta a nivel emocional, no biológico", 
+                "C. El ruido es la única variable que afecta el sueño", 
+                "D. Vivir en ciudad siempre es mejor por el acceso a servicios de salud"],
+        correct: 0,
+        explicacion: "La exposición crónica a contaminantes del aire, como partículas PM2.5, induce inflamación sistémica, estrés oxidativo y daño al ADN, lo cual acelera el envejecimiento y aumenta el riesgo de enfermedades cardiovasculares y respiratorias.",
+        desmitificacion: "No basta con tener hábitos saludables si el entorno te envejece por dentro. Respirar aire contaminado es como fumar de forma invisible.",
+        referencia: "Pope, C. A., Burnett, R. T., Thurston, G. D., et al. (2009). Cardiovascular mortality and long-term exposure to particulate air pollution. New England Journal of Medicine, 360(4), 376–386."
     },
+
     {
-        question: "¿Qué afirmación sobre antioxidantes es científicamente válida?",
-        options: ["Altas dosis siempre ayudan", "Radicales libres pueden ser útiles", "Más = mejor", "Suplementos reemplazan frutas"],
-        correct: 1
+        question: "Luis tiene 52 años y siente que ya “se le pasó el tren” para mejorar su salud. ¿Qué efecto podría tener esta creencia en su cuerpo?",
+        options: ["A. Acelerar procesos de envejecimiento real como inflamación y pérdida funcional", 
+                "B. Activar genes de resiliencia porque se adapta a su edad", 
+                "C. No tiene impacto si no va acompañado de hábitos poco saludables", 
+                "D. Lo importante es el optimismo, no la creencia sobre la edad"],
+        correct: 0,
+        explicacion: "Creencias negativas sobre el envejecimiento activan respuestas fisiológicas que aumentan el estrés, reducen la motivación y afectan directamente biomarcadores de longevidad. La autopercepción puede modificar la biología.",
+        desmitificacion: "La edad está en la mente… pero también en tus células. Si crees que ya es tarde, tu cuerpo lo cree también.",
+        referencia: "Levy, B. R., Slade, M. D., Kunkel, S. R., & Kasl, S. V. (2002). Longevity increased by positive self-perceptions of aging. Psychological Science, 13(5), 409–414."
     },
+
     {
-        question: "¿Qué hábito nocturno sabotea tus ritmos internos?",
-        options: ["Pantallas antes de dormir", "Leer libros", "Habitación ventilada", "Música relajante"],
-        correct: 0
+        question: "David duerme 8 horas cada día, pero cambia el horario según su agenda. Cree que “dormir es dormir, da igual cuándo”. ¿Qué puede estar ocurriendo en su cuerpo?",
+        options: ["A. Dormir en horarios variables desincroniza los genes que controlan metabolismo y reparación celular", 
+                "B. Dormir más de 6 horas ya protege contra el envejecimiento", 
+                "C. El cuerpo prioriza la cantidad sobre la regularidad del sueño", 
+                "D. Dormir según las propias sensaciones es más natural que seguir horarios estrictos"],
+        correct: 0,
+        explicacion: "Cambiar el horario de sueño altera los ritmos circadianos, provocando desincronización hormonal, metabólica e inmunológica. Este caos circadiano se asocia con mayor riesgo de diabetes, obesidad, enfermedades cardiovasculares y envejecimiento prematuro.",
+        desmitificacion: "Dormir mucho no sirve si lo haces a deshoras. Tu biología funciona con reloj… y el desorden horario tiene un precio invisible.",
+        referencia: "Potter, G. D. M., Cade, J. E., Grant, P. J., & Hardie, L. J. (2009). Nutrition and the circadian system. Chronobiology International, 26(4), 597–625."
     },
+
     {
-        question: "¿Qué hábito alimenta células senescentes?",
-        options: ["Comer en exceso", "Dormir profundo", "Entrenar fuerza", "Agua mineral en ayunas"],
-        correct: 0
+        question: "Julia hace ayunos líquidos de varios días con batidos “detox”. Cree que así limpia su cuerpo y activa su metabolismo. ¿Qué podría estar ocurriendo en realidad?",
+        options: [" A. Puede estar perdiendo masa muscular y ralentizando su metabolismo", 
+                "B. Estimula intensamente la autofagia y la regeneración celular", 
+                "C. Aumenta su tasa metabólica basal por efecto de choque", 
+                "D. Estos batidos eliminan toxinas mejor que una dieta rica en fibra"],
+        correct: 0,
+        explicacion: "Las dietas líquidas hipocalóricas reducen la ingesta proteica y energía total, favoreciendo la pérdida muscular. Esto reduce el metabolismo basal, deteriora la salud metabólica y puede generar efecto rebote al terminar el “detox”.",
+        desmitificacion: "Los batidos detox no desintoxican nada que tus riñones e hígado no hagan ya. Y a veces, lo que limpias… es tu masa muscular.",
+        referencia: "Harvard Health Publishing. (2020). The truth about detox diets. Harvard Medical School."
     },
+
     {
-        question: "¿Qué factor externo acelera el envejecimiento celular?",
-        options: ["Contaminación urbana", "Restaurantes salados", "Ruidos de tráfico", "No caminar diario"],
-        correct: 0
+        question: "Muchos comienzan su día con una taza de café en ayunas, creyendo que es parte de un ritual saludable. ¿Qué ha demostrado la ciencia sobre este hábito?",
+        options: ["A. Eleva el cortisol de forma excesiva y puede aumentar el estrés biológico", 
+                "B. Mejora la sensibilidad a la insulina si se toma sin comida", 
+                "C. Disminuye la secreción de melatonina acumulada durante la noche", 
+                "D. Estimula la digestión y ayuda a regular los ritmos circadianos"],
+        correct: 0,
+        explicacion: "Beber café justo al despertar, cuando el cortisol está naturalmente alto, puede exacerbar la activación del eje HPA, favoreciendo disfunción del eje y síntomas de agotamiento o ansiedad prolongada. Tomarlo más tarde o con comida es más recomendable.",
+        desmitificacion: "Café sí. Pero no a cualquier hora ni de cualquier forma. En ayunas y justo al despertar, puede ser una receta para el estrés biológico silencioso.",
+        referencia: "Smith, A. P., & Brice, C. (2021). Caffeine, performance and mood: A review of recent evidence. Journal of Psychopharmacology, 35(6), 723–730."
     },
+
     {
-        question: "¿Qué creencia psicológica acelera el deterioro físico?",
-        options: ["Es tarde para mejorar", "Visualizarse joven no sirve", "Creer que envejeces rápido", "No pensar en la edad"],
-        correct: 2
+        question: "Laura duerme solo 5 horas entre semana, pero compensa el fin de semana durmiendo 10h. Cree que así equilibra su salud. ¿Qué revela la ciencia sobre esta estrategia?",
+        options: ["A. El daño metabólico acumulado no se revierte durmiendo más solo dos días", 
+                "B. Dormir más el fin de semana activa genes de longevidad", 
+                "C. El sueño REM de los fines de semana es suficiente para regenerar", 
+                "D. Dormir 10 horas puede generar una sobrecarga de oxígeno en el cerebro"],
+        correct: 0,
+        explicacion: "Privarse de sueño durante la semana altera el metabolismo, aumenta la resistencia a la insulina y eleva los niveles de inflamación. Dormir más el fin de semana no revierte estos efectos y puede incluso empeorar la regulación circadiana.",
+        desmitificacion: "Dormir más el fin de semana no es una cura… es una ilusión. El sueño no se almacena ni se recupera como saldo bancario.",
+        referencia: "Depner, C. M., Stothard, E. R., & Wright, K. P. (2019). Metabolic consequences of sleep and circadian disorders. Current Biology, 29(6), R256–R266."
     },
+
     {
-        question: "¿Qué patrón de sueño altera ritmos biológicos?",
-        options: ["8h con horarios cambiantes", "Poco entre semana, mucho finde", "Luces LED", "Dos bloques de 4h"],
-        correct: 0
+        question: "Sofía cena a las 23:30 y desayuna a las 7:00. Cree que dormir 7–8h equivale a haber ayunado bien. ¿Qué revela la ciencia?",
+        options: [" A. Un ayuno nocturno de menos de 10h impide activar procesos de limpieza celular", 
+                "B. Dormir ya es suficiente para activar la autofagia sin importar cuándo se cena", 
+                "C. Lo importante no es la duración del ayuno, sino la calidad del sueño", 
+                "D. Cenar tarde ayuda al cuerpo a tener energía durante el sueño profundo"],
+        correct: 0,
+        explicacion: "Los procesos como la autofagia y la reparación mitocondrial se activan en ausencia de nutrientes. Si el ayuno nocturno es muy corto, estas funciones se ven inhibidas, impidiendo que el cuerpo elimine células dañadas.",
+        desmitificacion: "Dormir no es lo mismo que ayunar. Si cenas tarde y desayunas pronto, tu cuerpo nunca entra en modo reparación… solo en modo digestión.",
+        referencia: "Sutton, E. F., Beyl, R., Early, K. S., et al. (2018). Early Time-Restricted Feeding Improves Insulin Sensitivity, Blood Pressure, and Oxidative Stress Even without Weight Loss in Men with Prediabetes. Cell Metabolism, 27(6), 1212–1221.e3."
     },
+
     {
-        question: "¿Qué hábito 'detox' puede ralentizar metabolismo?",
-        options: ["Ayuno 16h semanal", "Batidos detox varios días", "Eliminar azúcar", "Sustituir snack por fruta"],
-        correct: 1
+        question: "Álvaro corre 10 km todos los días sin descansar. Cree que cuanto más cardio haga, más saludable será. ¿Qué dice la ciencia?",
+        options: ["A. El exceso de cardio puede generar estrés oxidativo y envejecimiento cardíaco en ciertos casos", 
+                "B. Correr cada día siempre mejora la salud sin importar la dosis", 
+                "C. El ejercicio aeróbico frecuente nunca produce daño mitocondrial", 
+                "D. Cuanto más se corre, más se reduce el riesgo cardiovascular, sin techo conocido"],
+        correct: 0,
+        explicacion: "El ejercicio intenso y sostenido sin descanso puede elevar el estrés oxidativo y causar remodelación cardíaca desfavorable. El beneficio sigue una curva en J: más no siempre es mejor.",
+        desmitificacion: "El mito de “más es mejor” en cardio puede ser contraproducente. El sobreentrenamiento también envejece… aunque te veas en forma.",
+        referencia: "O'Keefe, J. H., Patil, H. R., Lavie, C. J., et al. (2012). Potential adverse cardiovascular effects from excessive endurance exercise. Mayo Clinic Proceedings, 87(6), 587–595."
     },
+
     {
-        question: "¿Qué hábito matutino altera tu eje hormonal?",
-        options: ["Café al despertar sin comer", "Luz solar", "Ejercicio en ayunas", "Agua con limón"],
-        correct: 0
+        question: "Carlos toma un multivitamínico genérico cada mañana “por si acaso”. Cree que así cubre carencias sin riesgos. ¿Qué ha demostrado la ciencia?",
+        options: ["A. Tomar suplementos sin deficiencia real no mejora la salud y puede alterar procesos celulares", 
+                "B. Las vitaminas en exceso se eliminan y no afectan negativamente", 
+                "C. Cuantas más vitaminas se tomen, más protegido está el organismo", 
+                "D. Todos deberíamos tomar suplementos sin necesidad de diagnóstico previo"],
+        correct: 0,
+        explicacion: "Los multivitamínicos genéricos, especialmente en dosis altas, pueden interferir con rutas metabólicas, causar toxicidad subclínica o inhibir respuestas adaptativas. No aportan beneficios si no hay deficiencia.",
+        desmitificacion: "Tomar suplementos “por si acaso” puede ser innecesario o incluso contraproducente. Las vitaminas también se regulan… no se acumulan sin consecuencias.",
+        referencia: "Mursu, J., Robien, K., Harnack, L. J., et al. (2011). Dietary Supplements and Mortality Rate in Older Women: The Iowa Women’s Health Study. Archives of Internal Medicine, 171(18), 1625–1633."
     },
+
     {
-        question: "Dormir 5h entre semana y 10h en finde...",
-        options: ["No compensa daño", "Mucha melatonina", "Menos REM", "Oxígeno cerebral excesivo"],
-        correct: 0
+        question: "Daniel toma melatonina cada noche desde hace meses. Cree que al ser “natural” no hay problema. ¿Qué debería saber?",
+        options: ["A. La melatonina mal dosificada puede alterar el ritmo circadiano y causar dependencia crónica", 
+                "B. No pasa nada por usar melatonina todas las noches indefinidamente", 
+                "C. La melatonina natural no afecta a la producción endógena", 
+                "D. Si ayuda a dormir, no tiene consecuencias sobre el eje hormonal"],
+        correct: 0,
+        explicacion: "El uso crónico de melatonina sin indicación médica puede suprimir la producción endógena y alterar la fase del ritmo circadiano. Dosis incorrectas o tiempos mal ajustados pueden agravar el insomnio.",
+        desmitificacion: "Lo “natural” no siempre es inofensivo. Mal usada, la melatonina puede desincronizarte más de lo que te regula.",
+        referencia: "Arendt, J. (2006). Melatonin and human rhythms. Chronobiology International, 23(1–2), 21–37."
+    },
+
+    {
+        question: "Martina se ducha con agua helada todos los días porque escuchó que “activa la longevidad”. ¿Qué dice la ciencia al respecto?",
+        options: ["A. El beneficio depende del contexto: puede activar hormesis o ser un estresor crónico perjudicial", 
+                "B. Las duchas frías prolongan la vida sin importar la frecuencia o estado de salud", 
+                "C. El frío siempre es regenerador y mejora todas las funciones mitocondriales", 
+                "D. No hay ningún efecto fisiológico comprobado asociado a la exposición al frío"],
+        correct: 0,
+        explicacion: "La exposición breve y controlada al frío puede activar rutas de hormesis que estimulan mitocondrias y adipocitos marrones. Pero si se hace en exceso o sin adaptación puede ser un estresor negativo y afectar la inmunidad o el sistema cardiovascular.",
+        desmitificacion: "No todo lo que incomoda rejuvenece. El frío bien usado puede ser medicina… mal usado, un castigo sin beneficio.",
+        referencia: "Huang, G. Y., et al. (2022). Cold exposure and brown adipose tissue activation: A review of the evidence in humans. Frontiers in Endocrinology, 13, 838160."
+    },
+
+    {
+        question: "Jorge bebe una copa de vino tinto cada noche convencido de que el resveratrol lo protege del envejecimiento. ¿Qué ha demostrado la ciencia?",
+        options: ["A. Los beneficios del resveratrol son dosis-dependientes y no justifican el consumo diario de alcohol", 
+                "B. Una copa diaria de vino es claramente protectora para todos los adultos", 
+                "C. El alcohol mejora la función endotelial y debería incluirse en dietas saludables", 
+                "D. El resveratrol del vino tiene una biodisponibilidad altísima que justifica su uso"],
+        correct: 0,
+        explicacion: "El resveratrol tiene efectos antioxidantes en laboratorio, pero su biodisponibilidad oral es baja y el daño del alcohol supera cualquier posible beneficio. El consumo habitual de vino, incluso moderado, se asocia a riesgo aumentado de cáncer y envejecimiento acelerado.",
+        desmitificacion: "Una copa no rejuvenece. El vino no es un suplemento… es alcohol con buen marketing.",
+        referencia: "Lopez-Otin, C., & Kroemer, G. (2021). Hallmarks of Health. Cell, 184(1), 33–63."
+    },
+
+    {
+        question: "Elena duerme 10 horas cada noche “para regenerar bien”. Cree que cuanto más duerma, más joven se mantendrá. ¿Qué revela la ciencia?",
+        options: ["A. Dormir más de 9h de forma habitual se asocia a mayor mortalidad y disfunción metabólica", 
+                "B. Dormir mucho siempre es beneficioso porque mejora la fase REM", 
+                "C. El cuerpo se recupera más profundamente con sueño prolongado", 
+                "D. No existe relación entre dormir demasiado y problemas de salud"],
+        correct: 0,
+        explicacion: "Un exceso de sueño puede estar vinculado a baja calidad del mismo, inflamación crónica o enfermedades subyacentes. Varios estudios observacionales asocian el sueño prolongado con mayor riesgo cardiovascular y menor longevidad.",
+        desmitificacion: "Dormir más de la cuenta no te hace más joven. Puede ser una señal de que tu cuerpo está fallando… no regenerando.",
+        referencia: "Patel, S. R., Malhotra, A., Gottlieb, D. J., et al. (2006). Correlates of long sleep duration. Sleep, 29(7), 881–889."
+    },
+
+    {
+        question: "Clara solo compra alimentos orgánicos. Cree que eso por sí solo la protege del envejecimiento. ¿Qué ha concluido la ciencia?",
+        options: ["A. Comer orgánico reduce exposición a pesticidas, pero no reemplaza otros pilares de salud celular", 
+                "B. Lo orgánico es por definición antienvejecimiento y suficiente para vivir más", 
+                "C. La alimentación orgánica impide la inflamación y la disfunción mitocondrial", 
+                "D. Las personas que comen orgánico no necesitan hacer ejercicio ni controlar el estrés"],
+        correct: 0,
+        explicacion: "La comida orgánica puede tener menos pesticidas, pero no necesariamente más nutrientes o efectos directos sobre longevidad. La salud celular requiere múltiples factores: ejercicio, ritmo circadiano, sueño, estrés, etc.",
+        desmitificacion: "Comer limpio es valioso. Pero si lo demás falla, no hay verdura ecológica que te salve.",
+        referencia: "Baudry, J., et al. (2018). Association of frequency of organic food consumption with cancer risk: Findings from the NutriNet-Santé Prospective Cohort Study. JAMA Internal Medicine, 178(12), 1597–1606."
+    },
+
+    ];
+    
+// 🧠 Variables globales
+    let preguntasSeleccionadas = [];
+    let preguntasMostradas = [];
+    let respuestasUsuario = [];
+    let currentQuestion = 0;
+    let score = 0;
+    const totalPorTest = 8;  // Número de preguntas a mostrar por test
+    let formularioYaCompletado = false;
+
+    // 🧪 Función para seleccionar preguntas únicas
+    function obtenerPreguntasAleatorias(arr, n) {
+    const copia = [...arr];
+    const seleccionadas = [];
+
+    for (let i = 0; i < n; i++) {
+        const index = Math.floor(Math.random() * copia.length);
+        seleccionadas.push(copia.splice(index, 1)[0]);
     }
-];
 
-        let currentQuestion = 0;
-        let score = 0;
+    return seleccionadas;
+    }
 
-        function loadQuestion() {
-            const quiz = document.getElementById('quiz');
-            quiz.innerHTML = "";
-            if (currentQuestion < questions.length) {
-                const q = questions[currentQuestion];
-                const div = document.createElement('div');
-                div.className = "question";
-                div.innerHTML = `<h3>Pregunta ${currentQuestion + 1} de ${questions.length}</h3><p>${q.question}</p>`;
-                const ul = document.createElement('ul');
-                ul.className = "options";
-                q.options.forEach((opt, idx) => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<button onclick="selectOption(${idx})">${opt}</button>`;
-                    ul.appendChild(li);
-                });
-                div.appendChild(ul);
-                quiz.appendChild(div);
-                updateProgress();
+
+// ▶️ Se ejecuta cuando el usuario inicia el test
+    function iniciarTest() {
+    preguntasSeleccionadas = obtenerPreguntasAleatorias(questions, totalPorTest);
+    preguntasMostradas.push(...preguntasSeleccionadas);
+    respuestasUsuario = [];
+    score = 0;
+    currentQuestion = 0;
+
+    document.getElementById('startContainer').classList.add('hidden');
+    document.getElementById('quiz').classList.remove('hidden');
+    updateProgress();
+    loadQuestion();
+    }
+
+
+    function loadQuestion() {
+        const quiz = document.getElementById('quiz');
+        quiz.innerHTML = "";
+        if (currentQuestion < preguntasSeleccionadas.length) {
+            const q = preguntasSeleccionadas[currentQuestion];
+            const div = document.createElement('div');
+            div.className = "question";
+            div.innerHTML = `<h3>Pregunta ${currentQuestion + 1} de ${preguntasSeleccionadas.length}</h3><p>${q.question}</p>`;
+            const ul = document.createElement('ul');
+            ul.className = "options";
+            q.options.forEach((opt, idx) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<button onclick="selectOption(${idx})">${opt}</button>`;
+                ul.appendChild(li);
+            });
+            div.appendChild(ul);
+            quiz.appendChild(div);
+            updateProgress();
+        } else {
+            updateProgress();  // Actualizar barra al 100%
+
+            if (formularioYaCompletado) {
+                mostrarResultadoYDescarga();  // Salta directamente al resultado
             } else {
                 document.getElementById('emailForm').classList.remove('hidden');
             }
         }
 
-        function selectOption(index) {
-            if (index === questions[currentQuestion].correct) score++;
-            currentQuestion++;
-            loadQuestion();
-        }
+    }
 
-        function updateProgress() {
-            const percent = Math.floor((currentQuestion / questions.length) * 100);
-            document.getElementById('progress').style.width = percent + "%";
-            document.getElementById('progress').innerText = `Pregunta ${currentQuestion} de ${questions.length}`;
-        }
-
-
-        let captchaActual = { pregunta: "¿Cuánto es 2 + 2?", respuesta: "4" };
-        const preguntasCaptcha = [
-            { pregunta: "¿Cuánto es 3 + 5?", respuesta: "8" },
-            { pregunta: "¿Cuánto es 6 - 2?", respuesta: "4" },
-            { pregunta: "¿Cuánto es 1 + 2?", respuesta: "3" },
-            { pregunta: "¿Cuánto es 5 + 2?", respuesta: "7" },
-            { pregunta: "¿Cuánto es 7 + 2?", respuesta: "9" },
-            { pregunta: "¿Cuánto es 2 x 1?", respuesta: "2" },
-            { pregunta: "¿Cuánto es 3 - 2?", respuesta: "1" },
-            { pregunta: "¿Cuánto es 10 - 5?", respuesta: "5" }
-        ];
-        window.addEventListener("DOMContentLoaded", () => {
-            captchaActual = preguntasCaptcha[Math.floor(Math.random() * preguntasCaptcha.length)];
-            document.getElementById("captchaPregunta").textContent = "Pregunta de seguridad: " + captchaActual.pregunta;
-        });
-
-        function validarFormulario() {
-            const email = document.getElementById("email").value.trim();
-            const captcha = document.getElementById("captchaRespuesta").value.trim();
-            const honeypot = document.getElementById("campoTrampa").value.trim();
-            const consentimiento = document.getElementById("consentimientoRGPD").checked;
-
-            if (!email.includes("@")) {
-            alert("Por favor, introduce un email válido.");
-            return;
-            }
-            if (!consentimiento) {
-            alert("Debes aceptar la política de privacidad para continuar.");
-            return;
-            }
-            if (honeypot !== "") {
-            alert("Detección de comportamiento automático.");
-            return;
-            }
-            if (captcha !== captchaActual.respuesta) {
-            alert("Respuesta incorrecta al CAPTCHA.");
-            return;
-            }
-
-            // Enviar a Google Sheets
-            const nombre = document.getElementById("nombre").value.trim();
-            enviarAGoogleSheets({ Nombre: nombre, Email: email, Origen: "Test_Genius" });
-
-
-            // Mostrar resultado y permitir descarga
-            mostrarResultadoYDescarga();
-        }
-
-        function enviarAGoogleSheets(data) {
-            const formData = new FormData();
-            for (const key in data) {
-            formData.append(key, data[key]);
-            }
-            fetch("https://script.google.com/macros/s/AKfycbxiG6oK4N_KJ6p6t9vjfEe82Z-RNl77-doyQg4SHv630Jyr3bl6uXPlcMXjnIUhXZRv/exec", {
-            method: "POST",
-            body: formData
-            }).then(res => res.text()).then(console.log).catch(console.error);
-        }
-
-        function mostrarResultadoYDescarga() {
-            let badge = "";
-            if (score >= 14) badge = "🥇 Nivel Oro – ¡Tus creencias están alineadas con la ciencia!";
-            else if (score >= 11) badge = "🥈 Nivel Plata – Estás en muy buen camino.";
-            else if (score >= 8) badge = "🥉 Nivel Bronce – Algunas creencias pueden mejorarse.";
-            else badge = "🔵 Nivel Esperanza – Estás a tiempo de transformar tu salud.";
-
-            document.getElementById('quiz').classList.add('hidden');
-            document.getElementById('emailForm').classList.add('hidden');
-            const result = document.getElementById('result');
-            result.classList.remove('hidden');
-            result.innerHTML = `
-            <p>Has completado el test. Puntuación: ${score}/${questions.length}</p>
-            <p>${badge}</p>
-            <button onclick="window.open('https://github.com/nrventurini/ebook_longevidad/raw/main/guia-longevidad.pdf', '_blank')">
-                📥 Descargar guía gratuita en PDF
-            </button>
-            `;
-        }
-
+    function selectOption(index) {
+        respuestasUsuario.push(index);  // Registrar siempre la respuesta seleccionada
+        if (index === preguntasSeleccionadas[currentQuestion].correct) score++;
+        currentQuestion++;
         loadQuestion();
+}
+
+
+    function updateProgress() {
+        const percent = Math.floor((currentQuestion / preguntasSeleccionadas.length) * 100);
+        document.getElementById('progress').style.width = percent + "%";
+        document.getElementById('progress').innerText = `Pregunta ${currentQuestion} de ${preguntasSeleccionadas.length}`;
+    }
+
+
+    let captchaActual = { pregunta: "¿Cuánto es 2 + 2?", respuesta: "4" };
+    const preguntasCaptcha = [
+        { pregunta: "¿Cuánto es 3 + 5?", respuesta: "8" },
+        { pregunta: "¿Cuánto es 6 - 2?", respuesta: "4" },
+        { pregunta: "¿Cuánto es 1 + 2?", respuesta: "3" },
+        { pregunta: "¿Cuánto es 5 + 2?", respuesta: "7" },
+        { pregunta: "¿Cuánto es 7 + 2?", respuesta: "9" },
+        { pregunta: "¿Cuánto es 2 x 1?", respuesta: "2" },
+        { pregunta: "¿Cuánto es 3 - 2?", respuesta: "1" },
+        { pregunta: "¿Cuánto es 10 - 5?", respuesta: "5" }
+    ];
+    window.addEventListener("DOMContentLoaded", () => {
+        captchaActual = preguntasCaptcha[Math.floor(Math.random() * preguntasCaptcha.length)];
+        document.getElementById("captchaPregunta").textContent = "Pregunta de seguridad: " + captchaActual.pregunta;
+    });
+
+    function validarFormulario() {
+        const email = document.getElementById("email").value.trim();
+        const captcha = document.getElementById("captchaRespuesta").value.trim();
+        const honeypot = document.getElementById("campoTrampa").value.trim();
+        const consentimiento = document.getElementById("consentimientoRGPD").checked;
+
+        if (!email.includes("@")) {
+        alert("Por favor, introduce un email válido.");
+        return;
+        }
+        if (!consentimiento) {
+        alert("Debes aceptar la política de privacidad para continuar.");
+        return;
+        }
+        if (honeypot !== "") {
+        alert("Detección de comportamiento automático.");
+        return;
+        }
+        if (captcha !== captchaActual.respuesta) {
+        alert("Respuesta incorrecta al CAPTCHA.");
+        return;
+        }
+
+        // Enviar a Google Sheets
+        const nombre = document.getElementById("nombre").value.trim();
+        enviarAGoogleSheets({ Nombre: nombre, Email: email, Origen: "Test_Genius" });
+
+        
+        formularioYaCompletado = true;
+
+        // Mostrar resultado y permitir descarga
+        mostrarResultadoYDescarga();
+    }
+
+    function enviarAGoogleSheets(data) {
+        const formData = new FormData();
+        for (const key in data) {
+        formData.append(key, data[key]);
+        }
+        fetch("https://script.google.com/macros/s/AKfycbxiG6oK4N_KJ6p6t9vjfEe82Z-RNl77-doyQg4SHv630Jyr3bl6uXPlcMXjnIUhXZRv/exec", {
+        method: "POST",
+        body: formData
+        }).then(res => res.text()).then(console.log).catch(console.error);
+    }
+
+    function mostrarResultadoYDescarga() {
+        let badge = "";
+        const porcentaje = Math.round((score / preguntasSeleccionadas.length) * 100);
+        if (porcentaje >= 90) badge = "🥇 Nivel Oro – ¡Tus creencias están alineadas con la ciencia!";
+        else if (porcentaje >= 70) badge = "🥈 Nivel Plata – Estás en muy buen camino.";
+        else if (porcentaje >= 50) badge = "🥉 Nivel Bronce – Algunas creencias pueden mejorarse.";
+        else badge = "🔵 Nivel Esperanza – Estás a tiempo de transformar tu salud.";
+
+        document.getElementById('quiz').classList.add('hidden');
+        document.getElementById('emailForm').classList.add('hidden');
+        const result = document.getElementById('result');
+        result.classList.remove('hidden');
+
+        let html = `
+            
+            <p><strong>✅ Aciertos:</strong> ${porcentaje}% (${score} de ${preguntasSeleccionadas.length} preguntas)</p>
+            <p><strong>🧭 Nivel:</strong> ${badge}</p>
+
+        `;
+        html += `
+        <div style="margin-top: 25px; text-align: center;">
+            <p style="font-size: 14px; margin-bottom: 8px; max-width: 500px; margin-left: auto; margin-right: auto;">
+            🎁 Descarga gratis nuestro ebook con conocimiento valioso para mejorar tu salud y longevidad.
+            </p>
+            <button onclick="window.open('https://github.com/nrventurini/ebook_longevidad/raw/main/guia-longevidad.pdf', '_blank')" style="
+            font-size: 14px;
+            padding: 8px 16px;
+            background-color: #e9ecef;
+            color: black;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+            ">
+            📥 Descargar guía gratuita en PDF
+            </button>
+        </div>
+        `;
+
+
+    // Mostrar botón solo si no hay explicaciones pendientes
+    if (!respuestasUsuario.some((r, i) => r !== preguntasSeleccionadas[i].correct)) {
+    html += `
+        <div style="margin-top: 30px; text-align: center;">
+        <p style="font-size: 15px; margin-bottom: 10px;">
+            ¿Te atreves a retarte con nuevas preguntas? 👇
+        </p>
+        <button onclick="repetirConNuevas()" style="
+            font-size: 16px;
+            padding: 12px 24px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        ">
+            🔁 Repetir con nuevas preguntas
+        </button>
+        </div>
+    `;
+    }
+
+
+
+    // Preguntas falladas
+        let errores = "";
+        for (let i = 0; i < preguntasSeleccionadas.length; i++) {
+            if (respuestasUsuario[i] !== preguntasSeleccionadas[i].correct) {
+                errores += `
+                    <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+                        <p><span style="font-weight: bold;">❓ Pregunta:</span> <span style="font-weight: normal;">${preguntasSeleccionadas[i].question}</p>
+                        <p><span style="font-weight: bold;">✅ Respuesta correcta:</span> <span style="font-weight: normal;">${preguntasSeleccionadas[i].options[preguntasSeleccionadas[i].correct]}</p>
+                        <p><span style="font-weight: bold;">🧠 Explicación científica:</span> <span style="font-weight: normal;">${preguntasSeleccionadas[i].explicacion}</p>
+                        <p><span style="font-weight: bold;">❌ Desmitificación:</span> <span style="font-weight: normal;">${preguntasSeleccionadas[i].desmitificacion}</p>
+                        <p><span style="font-weight: bold;">📚 Referencia:</span> <span style="font-weight: normal;">${preguntasSeleccionadas[i].referencia}</p>
+
+                    </div>
+                `;
+            }
+        }
+
+        if (errores) {
+        html += `
+            <h3 style="margin-top: 30px;">📘 Explicaciones para tus respuestas incorrectas:</h3>
+            ${errores}
+
+            <div style="margin-top: 30px; text-align: center;">
+            <p style="font-size: 16px; margin-bottom: 10px;">
+                ¿Te atreves a retarte con nuevas preguntas? 👇
+            </p>
+            <button onclick="repetirConNuevas()" style="
+                font-size: 18px;
+                padding: 14px 28px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            ">
+                🔁 Repetir con nuevas preguntas
+            </button>
+            </div>
+`;
+}
+
+
+        result.innerHTML = html;
+    }
+
+
+
+    function repetirConNuevas() {
+        const preguntasRestantes = questions.filter(q => !preguntasMostradas.includes(q));
+
+        if (preguntasRestantes.length < 1) {
+            alert("🎉 Ya has respondido todas las preguntas disponibles. ¡Bien hecho!");
+            return;
+            }
+
+        const numPreguntas = Math.min(totalPorTest, preguntasRestantes.length);
+        preguntasSeleccionadas = obtenerPreguntasAleatorias(preguntasRestantes, numPreguntas);
+        preguntasMostradas.push(...preguntasSeleccionadas);
+        respuestasUsuario = [];
+        score = 0;
+        currentQuestion = 0;
+
+        document.getElementById('result').classList.add('hidden');
+
+        if (!formularioYaCompletado) {
+        document.getElementById('quiz').classList.remove('hidden');
+        document.getElementById('emailForm').classList.remove('hidden');
+        } else {
+        document.getElementById('quiz').classList.remove('hidden');
+        document.getElementById('emailForm').classList.add('hidden');
+        }
+
+        updateProgress();
+        loadQuestion();
+        }
+
 
     </script>
 </body>
