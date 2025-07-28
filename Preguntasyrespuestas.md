@@ -1,4 +1,4 @@
-# VITALGENIUS – Examen Completo (16 Preguntas)
+# VITALGENIUS – Examen Completo (24 Preguntas)
 
 ## Pregunta 1 – Ayuno Intermitente
 
