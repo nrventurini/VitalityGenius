@@ -63,7 +63,18 @@
     </p>
   </div>
 
-  <button onclick="validarFormulario()">Quiero ver mi puntuación</button>
+  <button onclick="validarFormulario()" style="
+    font-size: 18px;
+    padding: 14px 28px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    ">
+    📊 Quiero ver mi puntuación
+    </button>
 </div>
 
 
@@ -366,7 +377,7 @@
     let respuestasUsuario = [];
     let currentQuestion = 0;
     let score = 0;
-    const totalPorTest = 8;  // Número de preguntas a mostrar por test
+    const totalPorTest = 12;  // Número de preguntas a mostrar por test
     let formularioYaCompletado = false;
 
     // 🧪 Función para seleccionar preguntas únicas
