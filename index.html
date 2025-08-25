@@ -16,6 +16,12 @@
         .hidden { display: none; }
         .email-form { margin-top: 20px; }
         .result { font-weight: bold; margin-top: 20px; }
+
+        /* --- Anti-bot honeypot --- */
+        .hp-field{position:absolute;left:-9999px;opacity:0;height:0;width:0;pointer-events:none;}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+
     </style>
 </head>
 <body>
@@ -51,14 +57,22 @@
     <input id="captchaRespuesta" type="text" style="margin-top: 4px; width: 60px;" />
   </div>
 
-  <!-- Honeypot -->
-  <input id="campoTrampa" type="text" autocomplete="off" style="display: none;" />
+ <!-- Honeypot (doble: estático + dinámico) -->
+    <div class="hp-field" aria-hidden="true">
+    <label for="campoTrampa" class="sr-only">No rellenar</label>
+    <input id="campoTrampa" name="website" type="text" autocomplete="off" tabindex="-1" />
+    </div>
+    <div class="hp-field" aria-hidden="true">
+    <label for="hpDyn" class="sr-only">No rellenar</label>
+    <input id="hpDyn" type="text" autocomplete="off" tabindex="-1" />
+    </div>
+
 
   <!-- RGPD -->
   <div style="margin-top: 12px; font-size: 14px;">
     <label>
       <input id="consentimientoRGPD" type="checkbox" />
-      Acepto la <a href="https://nrventurini.github.io/Pol-tica_privacidad/" target="_blank">política de privacidad</a>.
+      Acepto la <a href="https://nrventurini.github.io/Pol-tica_privacidad/" target="_blank" rel="noopener noreferrer">política de privacidad</a>.
     </label>
     <p style="font-size: 13px; color: #555; margin-top: 8px;">
       <strong>⚖️ Compromiso VitalExtension:</strong> Tus datos solo se usarán para enviarte tu resultado y guía.
@@ -423,7 +437,7 @@
             ul.className = "options";
             q.options.forEach((opt, idx) => {
                 const li = document.createElement('li');
-                li.innerHTML = `<button onclick="selectOption(${idx})">${opt}</button>`;
+                li.innerHTML = `<button type="button" onclick="selectOption(${idx})">${opt}</button>`;
                 ul.appendChild(li);
             });
             div.appendChild(ul);
@@ -435,6 +449,7 @@
             if (formularioYaCompletado) {
                 mostrarResultadoYDescarga();  // Salta directamente al resultado
             } else {
+                formOpenedAt = Date.now(); // Para validar tiempo mínimo antes de enviar
                 document.getElementById('emailForm').classList.remove('hidden');
             }
         }
@@ -455,6 +470,24 @@
         document.getElementById('progress').innerText = `Pregunta ${currentQuestion} de ${preguntasSeleccionadas.length}`;
     }
 
+    // --- Seguridad y anti-tabnabbing / anti-bot ---
+    let formOpenedAt = null;
+
+    // Abre ventanas sin permitir acceso a window.opener (anti-tabnabbing)
+    function secureOpen(url){
+    const w = window.open(url, "_blank", "noopener");
+    if (w) w.opener = null;
+    }
+
+    // Asigna un name aleatorio al segundo honeypot
+    function initDynamicHoneypot(){
+    const dyn = document.getElementById("hpDyn");
+    if(!dyn) return;
+    const rand = "field_" + Math.random().toString(36).slice(2,10);
+    dyn.setAttribute("name", rand);
+    }
+
+
 
     let captchaActual = { pregunta: "¿Cuánto es 2 + 2?", respuesta: "4" };
     const preguntasCaptcha = [
@@ -467,18 +500,26 @@
         { pregunta: "¿Cuánto es 3 - 2?", respuesta: "1" },
         { pregunta: "¿Cuánto es 10 - 5?", respuesta: "5" }
     ];
+
+
     window.addEventListener("DOMContentLoaded", () => {
         captchaActual = preguntasCaptcha[Math.floor(Math.random() * preguntasCaptcha.length)];
         document.getElementById("captchaPregunta").textContent = "Pregunta de seguridad: " + captchaActual.pregunta;
+        initDynamicHoneypot();
     });
+
 
     function validarFormulario() {
         const email = document.getElementById("email").value.trim();
+        const nombre = document.getElementById("nombre").value.trim();
         const captcha = document.getElementById("captchaRespuesta").value.trim();
-        const honeypot = document.getElementById("campoTrampa").value.trim();
         const consentimiento = document.getElementById("consentimientoRGPD").checked;
+        const hp1 = document.getElementById("campoTrampa").value.trim();    //Honeypot
+        const hp2 = document.getElementById("hpDyn").value.trim();          //Honeypot
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;     //Validación de email básico, pero más estricto
+        const timeOk = formOpenedAt ? (Date.now() - formOpenedAt) >= 8000 : false;  // Tiempo mínimo (8s) desde que aparece el formulario para rellenarse y descartar bots
 
-        if (!email.includes("@")) {
+        if (!emailRegex.test(email)) {
         alert("Por favor, introduce un email válido.");
         return;
         }
@@ -486,17 +527,20 @@
         alert("Debes aceptar la política de privacidad para continuar.");
         return;
         }
-        if (honeypot !== "") {
-        alert("Detección de comportamiento automático.");
+        if (hp1 !== "" || hp2 !== "") {
+        alert("Detección de comportamiento automático (bots).");
         return;
         }
         if (captcha !== captchaActual.respuesta) {
         alert("Respuesta incorrecta al CAPTCHA.");
         return;
         }
+        if (!timeOk) {
+        alert("Demasiado rápido. Por favor, revisa los datos y vuelve a intentarlo.");
+        return;
+        }
 
         // Enviar a Google Sheets
-        const nombre = document.getElementById("nombre").value.trim();
         enviarAGoogleSheets({ Nombre: nombre, Email: email, Origen: "Test_Genius" });
 
         
@@ -541,7 +585,7 @@
             <p style="font-size: 14px; margin-bottom: 8px; max-width: 500px; margin-left: auto; margin-right: auto;">
             🎁 Descarga gratis nuestro ebook con conocimiento valioso para mejorar tu salud y longevidad.
             </p>
-            <button onclick="window.open('https://github.com/nrventurini/ebook_longevidad/raw/main/guia-longevidad.pdf', '_blank')" style="
+            <button onclick="secureOpen('https://github.com/nrventurini/ebook_longevidad/raw/main/guia-longevidad.pdf')" style="
             font-size: 14px;
             padding: 8px 16px;
             background-color: #e9ecef;
@@ -621,6 +665,28 @@
             </div>
 `;
 }
+
+        html += `
+        <div style="max-width:760px;margin:28px auto 0;text-align:center;border-top:1px solid #eee;padding-top:16px;">
+        <p style="font-size:16px;color:#444;margin-bottom:10px;">
+            ¿Te quedaste con ganas de más? <strong>Únete a la comunidad</strong> donde compartimos casos reales, guías prácticas y oportunidades.
+        </p>
+        <div style="display:inline-flex;gap:16px;align-items:center;filter:grayscale(1);">
+            <a href="https://www.instagram.com/vitalextension" target="_blank" rel="noopener noreferrer" aria-label="Instagram VitalExtension" title="Instagram">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61578791393799" target="_blank" rel="noopener noreferrer" aria-label="Facebook VitalExtension" title="Facebook">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="#111" role="img" aria-hidden="true">
+                <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.62.77-1.62 1.55v1.86h2.77l-.44 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/>
+            </svg>
+            </a>
+        </div>
+        </div>`;
+
 
 
         result.innerHTML = html;
